@@ -1,7 +1,20 @@
-function makeGrid() {
+function renderOptions() {
+  let size = prompt("Please enter your desired grid size.");
+  makeGrid(size);
+}
+
+function makeGrid(x = 16) {
+  if (document.body.contains(document.getElementsByTagName("tr")[0])){
+    console.log("table rows detected! 👍( ͡❛ ͜ʖ ͡❛👍)");
+    document.getElementById("pixelCanvas").innerHTML = "";
+    console.log("Removing table rows! (ノಠ益ಠ)ノ ┻━┻")
+  } else {
+    console.log("no table rows detected! ( ͡❛ _> ͡❛)👎");
+  };
+
   let tbl = document.getElementById("pixelCanvas");
 
-  for(let i = 0; i < 16; i++){
+  for(let i = 0; i < x; i++){
     let myRow = document.createElement("tr");
     myRow.id = "row" + i;
 
@@ -9,7 +22,7 @@ function makeGrid() {
 
     let rowW = document.getElementById("row" + i);
 
-    for(let j = 0; j < 16; j++){
+    for(let j = 0; j < x; j++){
       let myCell = document.createElement("td");
       rowW.appendChild(myCell);
     }
